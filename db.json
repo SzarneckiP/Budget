@@ -1,0 +1,157 @@
+{
+    "parentCategories": [
+        {
+            "id": "1",
+            "name": "Shopping"
+        },
+        {
+            "id": "2",
+            "name": "Bills and utilities"
+        },
+        {
+            "id": "4",
+            "name": "Educations"
+        },
+        {
+            "id": "5",
+            "name": "Entertainment"
+        }
+    ],
+    "categories": [
+        {
+            "id": "1",
+            "name": "Internet",
+            "parentCategoryId": "2"
+        },
+        {
+            "id": "2",
+            "name": "Mobile phone",
+            "parentCategoryId": "2"
+        },
+        {
+            "id": "3",
+            "name": "Rent",
+            "parentCategoryId": "2"
+        },
+        {
+            "id": "4",
+            "name": "Alcohol",
+            "parentCategoryId": "1"
+        },
+        {
+            "id": "5",
+            "name": "Grocery",
+            "parentCategoryId": "1"
+        },
+        {
+            "id": "6",
+            "name": "Chemistry",
+            "parentCategoryId": "1"
+        },
+        {
+            "id": "7",
+            "name": "IT Courses",
+            "parentCategoryId": "4"
+        },
+        {
+            "id": "8",
+            "name": "Restaurants and pubs",
+            "parentCategoryId": "5"
+        }
+    ],
+    "budgetCategory": [
+        {
+            "id": "1",
+            "budget": 120.47,
+            "categoryId": "1",
+            "budgetId": "1"
+        },
+        {
+            "id": "2",
+            "budget": 39.99,
+            "categoryId": "2",
+            "budgetId": "1"
+        },
+        {
+            "id": "3",
+            "budget": 789,
+            "categoryId": "3",
+            "budgetId": "1"
+        },
+        {
+            "id": "4",
+            "budget": 30,
+            "categoryId": "4",
+            "budgetId": "1"
+        },
+        {
+            "id": "5",
+            "budget": 450,
+            "categoryId": "5",
+            "budgetId": "1"
+        },
+        {
+            "id": "6",
+            "budget": 80,
+            "categoryId": "6",
+            "budgetId": "1"
+        }
+    ],
+    "budgets": [
+        {
+            "id": "1",
+            "name": "August",
+            "totalAmount": 2700
+        }
+    ],
+    "transactions": [
+        {
+            "id": "1",
+            "description": "Internet provider",
+            "amount": 120.47,
+            "categoryId": "1",
+            "date": "2021-12-31T00:01:00.768Z",
+            "budgetId": "1"
+        },
+        {
+            "id": "2",
+            "description": "Mobile network provider",
+            "amount": 39.99,
+            "categoryId": "2",
+            "date": "2021-12-31T00:02:00.768Z",
+            "budgetId": "1"
+        },
+        {
+            "id": "3",
+            "description": "Weekly shopping",
+            "amount": 23.88,
+            "categoryId": "6",
+            "date": "2021-12-31T00:03:00.768Z",
+            "budgetId": "1"
+        },
+        {
+            "id": "4",
+            "description": "Weekly shopping #2",
+            "amount": 12.48,
+            "categoryId": "6",
+            "date": "2021-12-31T00:04:00.768Z",
+            "budgetId": "1"
+        },
+        {
+            "id": "5",
+            "description": "Grocery shopping",
+            "amount": 16.53,
+            "categoryId": "5",
+            "date": "2021-12-31T00:05:00.768Z",
+            "budgetId": "1"
+        },
+        {
+            "description": "Default agile workflow",
+            "amount": 123,
+            "categoryId": "2",
+            "date": "2021-12-31",
+            "budgetId": "1",
+            "id": "1xFr3s"
+        }
+    ]
+}
