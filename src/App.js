@@ -1,6 +1,6 @@
 import GlobalStyles from './index.css';
 
-import { Navigation, Wrapper } from 'components';
+import { LoadingIndicator, Navigation, Wrapper } from 'components';
 import { ThemeProvider } from 'styled-components';
 import { theme } from 'utils/theme';
 import { useTranslation } from 'react-i18next';
@@ -10,14 +10,14 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
-import React from 'react';
+import React, { Fragment } from 'react';
 
 function App() {
 
   const { i18n } = useTranslation();
 
   return (
-    <ThemeProvider theme={theme}>
+    <Fragment>
       <GlobalStyles />
       <Router>
         <Navigation items={[
@@ -37,15 +37,17 @@ function App() {
           </Switch>
         </Wrapper>
       </Router>
-    </ThemeProvider>
+    </Fragment>
   );
 }
 
 const RootApp = () => {
   return (
-    <React.Suspense fallback='Loading...'>
-      <App />
-    </React.Suspense>
+    <ThemeProvider theme={theme}>
+      <React.Suspense fallback={<LoadingIndicator />}>
+        <App />
+      </React.Suspense>
+    </ThemeProvider>
   )
 }
 

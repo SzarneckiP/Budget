@@ -20,4 +20,7 @@ export const theme = {
             normal: 'rgb(219, 112, 147)',
         },
     },
+    size: {
+        normal: '20px',
+    }
 }
