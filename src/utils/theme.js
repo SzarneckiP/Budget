@@ -19,8 +19,12 @@ export const theme = {
         pink: {
             normal: 'rgb(219, 112, 147)',
         },
+
     },
     size: {
-        normal: '20px',
+        small: '10',
+        normal: '20',
+        medium: '50',
+        high: '90'
     }
 }

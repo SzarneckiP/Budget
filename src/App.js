@@ -1,6 +1,6 @@
 import GlobalStyles from './index.css';
 
-import { LoadingIndicator, Navigation, Wrapper } from 'components';
+import { LoadingIndicator, Navigation, Wrapper, Button, Home } from 'components';
 import { ThemeProvider } from 'styled-components';
 import { theme } from 'utils/theme';
 import { useTranslation } from 'react-i18next';
@@ -26,13 +26,13 @@ function App() {
         ]}
           RightElement={(
             <div>
-              <button onClick={() => i18n.changeLanguage('pl')}>pl</button>
-              <button onClick={() => i18n.changeLanguage('en')}>en</button>
+              <Button variant='regular' onClick={() => i18n.changeLanguage('pl')}>pl</Button >
+              <Button variant='regular' onClick={() => i18n.changeLanguage('en')}>en</Button >
             </div>
           )} />
         <Wrapper>
           <Switch>
-            <Route exact path='/'>Home</Route>
+            <Route exact path='/'>{Home}</Route>
             <Route path='/budget'>Budget</Route>
           </Switch>
         </Wrapper>
