@@ -35,16 +35,16 @@ export const H2 = styled(Description)`
 export const Button = styled.button`
     width: ${({ theme }) => theme.size.high * 5}px;
     height: ${({ theme }) => theme.size.medium}px;
-    background-color: rgb(219, 112, 147, .19);
+    background-color: rgb(219, 112, 147, .5);
     cursor: pointer;
     border-radius: ${({ theme }) => theme.size.small}px;
-    border: ${({ theme }) => ` 3px solid ${theme.color.pink.normal}`};
+    border: ${({ theme }) => ` 2px solid ${theme.color.pink.normal}`};
     margin-top: ${({ theme }) => theme.spacing.xl * 6}px;
     font-size: ${({ theme }) => theme.size.normal}px;
     font-family: 'Times New Roman', serif;
     font-weight:  ${({ theme }) => theme.size.high}px;
     &:hover{
-        background-color: rgb(219, 112, 147, .5);
+        background-color: rgb(219, 112, 147, 1);
     }
 `;
 
