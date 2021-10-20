@@ -21,6 +21,6 @@ export const fetchBudgetedCategories = (id) => {
 
     return {
         type: BUDGETED_CATEGORIES_GET,
-        promise
+        promise,
     }
 };
