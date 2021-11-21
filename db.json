@@ -59,7 +59,7 @@
             "parentCategoryId": "5"
         }
     ],
-    "budgetedCategories": [
+    "budgetCategories": [
         {
             "id": "1",
             "budget": 120.47,

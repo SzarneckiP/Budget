@@ -5,7 +5,8 @@ import { fetchBudget, fetchBudgetedCategories } from 'data/actions/budget.action
 import { fetchAllCategories } from 'data/actions/common.actions';
 
 import { Grid } from './Budget.css';
-import { LoadingIndicator } from 'components';
+
+import BudgetCategoryList from 'Pages/Budget/Components/BudgetCategoryList';
 
 const Budget = ({
     commonState, budgetState,
@@ -23,18 +24,14 @@ const Budget = ({
             && (!!budgetState && Object.keys(budgetState).length === 0),
         [commonState, budgetState]
     );
-    console.log(isLoaded);
+    console.log('isLoaded: ', isLoaded);
     return (
         <Grid>
             <section>
-                {isLoaded ? 'Category list' : (
-                    <LoadingIndicator></LoadingIndicator>
-                )}
+                <BudgetCategoryList />
             </section>
             <section>
-                {isLoaded ? 'Transaction list' : (
-                    <LoadingIndicator></LoadingIndicator>
-                )}
+                {'Transaction list'}
             </section>
         </Grid>
     )
@@ -43,8 +40,8 @@ const Budget = ({
 export default connect(state => {
     return {
         budget: state.budget.state.budget,
-        commonState: state.common.state.loadingState,
-        budgetState: state.budget.state.loadingState,
+        commonState: state.common.loadingState,
+        budgetState: state.budget.loadingState,
     }
 }, {
     fetchBudget,

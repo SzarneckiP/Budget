@@ -8,10 +8,11 @@ export default function promiseMiddleware() {
             };
 
             const SUCCESS = `${type}_SUCCESS`;
-            const FAILURE = `${type}_SUCCESS`;
-            const REQUEST = `${type}_SUCCESS`;
+            const FAILURE = `${type}_FAILURE`;
+            const REQUEST = `${type}_REQUEST`;
 
             next({ type: REQUEST, ...rest });
+
             return promise
                 .then(response => response.json())
                 .then(data => {

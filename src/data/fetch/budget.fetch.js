@@ -5,7 +5,7 @@ export const fetchBudget = (id) => {
 }
 
 export const fetchBudgetedCategories = (id) => {
-    const promise = fetch(`${process.env.REACT_APP_API_URL}/budgets/${id}/budgetedCategories`);
+    const promise = fetch(`${process.env.REACT_APP_API_URL}/budgets/${id}/budgetCategories`);
 
     return promise;
 }

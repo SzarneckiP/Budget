@@ -8,4 +8,5 @@ export const LOADING_STATES = {
     LOADED: 'LOADED',
     FAILED: 'FAILED',
 };
-
+// eslint-disable-next-line import/no-anonymous-default-export
+export default { LOADING_STATES };
