@@ -10,7 +10,7 @@ const Item = ({ item, onClickHandler, isActive }) => (
 
 const ToggleableList = ({ items }) => {
 
-    const [selectedItem, setSelectedItem] = useState('string');
+    const [selectedItem, setSelectedItem] = useState();
 
     return (
         <Fragment>
