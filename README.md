@@ -1,3 +1,13 @@
+What did I do and used in app:
+- React-Redux,
+- Used Hooks,
+- Styled-Components,
+- Translate i18next,
+- React.Suspense,
+- Used own middleware - Promise,
+- JSON Server
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
