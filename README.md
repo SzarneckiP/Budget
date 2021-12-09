@@ -1,4 +1,4 @@
-What did I do and used in app:
+What I done and used in app:
 - React-Redux,
 - Used Hooks,
 - Styled-Components,
