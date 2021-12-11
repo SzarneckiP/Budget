@@ -22,7 +22,7 @@ const BudgetCategoryList = ({ budgetedCategories, allCategories }) => {
         ),
         children: categories.map(budgetedCategory => {
 
-            const { name } = allCategories.find(category => category.id === budgetedCategory.categoryId)
+            const { name } = allCategories.find(category => category.id === budgetedCategory.categoryId);
 
             return (
                 <CategoryItem

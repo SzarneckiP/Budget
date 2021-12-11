@@ -1,21 +1,32 @@
 import styled from 'styled-components';
 
 export const Category = styled.div`
-    border: 1px solid ${({ theme }) => theme.color.gray.dark};
+    border-bottom: 1px solid ${({ theme }) => theme.color.gray.dark};
     padding: ${({ theme }) => theme.spacing.xs}px;
     display: flex;
     justify-content: space-between;
+    font-family: 'Readex Pro', sans-serif;
+    
 `
 
 export const ParentCategory = styled(Category)`
-    background-color: ${({ theme }) => theme.color.gray.normal};  
+    background-color: ${({ theme }) => theme.color.gray.normal};
+    font-weight: 600;  
+    font-size: ${({ theme }) => theme.size.normal}px;
+    border-top-left-radius: ${({ theme }) => theme.size.small}px;
+    border-top-right-radius: ${({ theme }) => theme.size.small}px;
+    padding-top: 10px;
+    padding-bottom: 10px; 
+`
+export const CategoryItem = styled(Category)`
+    background-color: ${({ theme }) => theme.color.gray.light};
+    font-weight: 400;
+    &:last-child {
+        border-bottom-left-radius: ${({ theme }) => theme.size.small}px;
+        border-bottom-right-radius: ${({ theme }) => theme.size.small}px;
+    }
 `
 
 export const Wrapper = styled.div`
-    margin:${({ theme }) => theme.spacing.xs}px;
-`
-
-export const CategoryItem = styled(Category)`
-    background-color: ${({ theme }) => theme.color.gray.light};
-
+    margin-top:${({ theme }) => theme.spacing.sm}px;
 `

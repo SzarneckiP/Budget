@@ -9,7 +9,7 @@ import { Grid } from './Budget.css';
 import BudgetCategoryList from 'Pages/Budget/Components/BudgetCategoryList';
 
 const Budget = ({
-    commonState, budgetState,
+    budgetState, commonState,
     fetchBudget, fetchBudgetedCategories, fetchAllCategories
 }) => {
 
@@ -40,8 +40,8 @@ const Budget = ({
 export default connect(state => {
     return {
         budget: state.budget.state.budget,
-        commonState: state.common.loadingState,
         budgetState: state.budget.loadingState,
+        commonState: state.common.loadingState,
     }
 }, {
     fetchBudget,
