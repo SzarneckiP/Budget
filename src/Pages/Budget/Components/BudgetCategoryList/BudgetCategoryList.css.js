@@ -31,8 +31,4 @@ export const Wrapper = styled.div`
 export const CategoryAmount = styled.span`
     font-weight: 700;
     color: ${({ theme, negative }) => negative ? theme.color.red.normal : theme.color.green.normal}
-<<<<<<< HEAD
 `
-=======
-`
->>>>>>> 0fcb5da81c83522312726b83e1058ec5b5af7ddb

@@ -6,11 +6,7 @@ import { ToggleableList } from 'components';
 import ParentCategory from './ParentCategory';
 import CategoryItem from './CategoryItem';
 
-<<<<<<< HEAD
 const BudgetCategoryList = ({ budget, budgetedCategories, allCategories }) => {
-=======
-const BudgetCategoryList = ({ budgetedCategories, allCategories, budget }) => {
->>>>>>> 0fcb5da81c83522312726b83e1058ec5b5af7ddb
 
     const budgetedCategoriesByParent = groupBy(
         budgetedCategories, item => allCategories.find(category => category.id === item.categoryId).parentCategory.name,
@@ -54,5 +50,4 @@ export default connect(state => ({
     budget: state.budget.state.budget,
     budgetedCategories: state.budget.state.budgetedCategories,
     allCategories: state.common.allCategories,
-    budget: state.budget.state.budget,
 }))(BudgetCategoryList);
