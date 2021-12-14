@@ -11,6 +11,7 @@ justify-content: space-between;
 
 export const List = styled.ul`
 display: flex;
+font-size: ${({ theme }) => theme.size.normal}px;
 `;
 
 export const NavigationWrapper = styled(Wrapper)`

@@ -19,7 +19,7 @@ const Budget = ({
         fetchAllCategories();
     }, [fetchBudget, fetchBudgetedCategories, fetchAllCategories]);
 
-    const isLoaded = useMemo(
+    const isLoaded = useMemo( //useMemo nie wykonuje ponownego uruchomienia  jeśli komponent sie przerenderuje
         () => (!!commonState && Object.keys(commonState).length === 0)
             && (!!budgetState && Object.keys(budgetState).length === 0),
         [commonState, budgetState]

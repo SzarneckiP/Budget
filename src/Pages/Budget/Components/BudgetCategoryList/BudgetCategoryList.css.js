@@ -6,12 +6,11 @@ export const Category = styled.div`
     display: flex;
     justify-content: space-between;
     font-family: 'Readex Pro', sans-serif;
-    
 `
 
 export const ParentCategory = styled(Category)`
     background-color: ${({ theme }) => theme.color.gray.normal};
-    font-weight: 600;  
+    font-weight: 520;  
     font-size: ${({ theme }) => theme.size.normal}px;
     border-top-left-radius: ${({ theme }) => theme.size.small}px;
     border-top-right-radius: ${({ theme }) => theme.size.small}px;
@@ -24,13 +23,16 @@ export const CategoryItem = styled(Category)`
     &:last-child {
         border-bottom-left-radius: ${({ theme }) => theme.size.small}px;
         border-bottom-right-radius: ${({ theme }) => theme.size.small}px;
-    }
 `
 
 export const Wrapper = styled.div`
-    margin-top:${({ theme }) => theme.spacing.sm}px;
+    margin-top: ${({ theme }) => theme.spacing.sm}px;
 `
 export const CategoryAmount = styled.span`
     font-weight: 700;
     color: ${({ theme, negative }) => negative ? theme.color.red.normal : theme.color.green.normal}
+<<<<<<< HEAD
 `
+=======
+`
+>>>>>>> 0fcb5da81c83522312726b83e1058ec5b5af7ddb
