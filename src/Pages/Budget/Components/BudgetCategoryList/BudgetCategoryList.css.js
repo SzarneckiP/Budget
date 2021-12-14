@@ -30,3 +30,7 @@ export const CategoryItem = styled(Category)`
 export const Wrapper = styled.div`
     margin-top:${({ theme }) => theme.spacing.sm}px;
 `
+export const CategoryAmount = styled.span`
+    font-weight: 700;
+    color: ${({ theme, negative }) => negative ? theme.color.red.normal : theme.color.green.normal}
+`
