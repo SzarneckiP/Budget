@@ -39,28 +39,28 @@ const BudgetCategoryList = ({ budget, budgetedCategories, allCategories }) => {
         }),
     }));
 
-    const totalSpent = budget.transactions
-        .reduce((acc, transaction) => acc + transaction.amount, 0);
-    const restToSpend = budget.totalAmount - totalSpent;
+    // const totalSpent = budget.transactions
+    //     .reduce((acc, transaction) => acc + transaction.amount, 0);
+    // const restToSpend = budget.totalAmount - totalSpent;
 
-    const amountTaken = budgetedCategories.reduce((acc, budgetedCategory) => {
-        const categoryTransactions = budget.transactions
-            .filter(transaction => transaction.categoryId === budgetedCategory.id);
-        const categoryExpenses = categoryTransactions
-            .reduce((acc, transaction) => acc + transaction.amount, 0);
+    // const amountTaken = budgetedCategories.reduce((acc, budgetedCategory) => {
+    //     const categoryTransactions = budget.transactions
+    //         .filter(transaction => transaction.categoryId === budgetedCategory.id);
+    //     const categoryExpenses = categoryTransactions
+    //         .reduce((acc, transaction) => acc + transaction.amount, 0);
 
-        return acc + Math.Max(categoryExpenses, budgetedCategory.budget);
-    }, 0);
+    //     return acc + Math.Max(categoryExpenses, budgetedCategory.budget);
+    // }, 0);
 
-    const notBudgetedTransaction = budget.transactions
-        .filter(transaction => {
-            return !budgetedCategories.find(budgetedCategory => budgetedCategory.id === transaction.categoryId)
-        });
+    // const notBudgetedTransaction = budget.transactions
+    //     .filter(transaction => {
+    //         return !budgetedCategories.find(budgetedCategory => budgetedCategory.id === transaction.categoryId)
+    //     });
 
-    const notBudgetedExpenses = notBudgetedTransaction
-        .reduce((acc, transaction) => acc + transaction.amount, 0);
+    // const notBudgetedExpenses = notBudgetedTransaction
+    //     .reduce((acc, transaction) => acc + transaction.amount, 0);
 
-    const availableForRestCategories = budget.totalAmount - amountTaken - notBudgetedExpenses;
+    // const availableForRestCategories = budget.totalAmount - amountTaken - notBudgetedExpenses;
 
     return (
         <div>

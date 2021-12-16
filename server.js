@@ -15,7 +15,7 @@ const server = app.listen(process.env.PORT || 8000, () => {
     console.log('Server is running...');
 });
 
-mongoose.connect(`mongodb+srv://SzarneckiP:${process.env.DB_PASS}@cluster0.zrsym.mongodb.net/BudgetDB?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(`mongodb+srv://${process.env.USER_NAME}:${process.env.DB_PASS}@cluster0.zrsym.mongodb.net/BudgetDB?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 
 db.once('open', () => {
