@@ -7,7 +7,7 @@ import { ToggleableList } from 'components';
 import ParentCategory from './ParentCategory';
 import CategoryItem from './CategoryItem';
 
-const BudgetCategoryList = ({ budget, budgetedCategories, allCategories }) => {
+const BudgetCategoryList = ({ budget, transactions, budgetedCategories, allCategories }) => {
     const { t } = useTranslation();
     const budgetedCategoriesByParent = groupBy(
         budgetedCategories, item => allCategories.find(category => category.id === item.categoryId).parentCategory.name,
@@ -20,7 +20,7 @@ const BudgetCategoryList = ({ budget, budgetedCategories, allCategories }) => {
                 name={parentName}
                 onClick={() => onClick(parentName)}
                 categories={categories}
-                transactions={budget.transactions}
+                transactions={transactions}
             />
         ),
         children: categories.map(budgetedCategory => {
@@ -33,18 +33,18 @@ const BudgetCategoryList = ({ budget, budgetedCategories, allCategories }) => {
                     key={budgetedCategory.id}
                     name={name}
                     item={budgetedCategory}
-                    transactions={budget.transactions}
+                    transactions={transactions}
                 />
             )
         }),
     }));
 
-    // const totalSpent = budget.transactions
+    // const totalSpent = transactions
     //     .reduce((acc, transaction) => acc + transaction.amount, 0);
     // const restToSpend = budget.totalAmount - totalSpent;
 
     // const amountTaken = budgetedCategories.reduce((acc, budgetedCategory) => {
-    //     const categoryTransactions = budget.transactions
+    //     const categoryTransactions = transactions
     //         .filter(transaction => transaction.categoryId === budgetedCategory.id);
     //     const categoryExpenses = categoryTransactions
     //         .reduce((acc, transaction) => acc + transaction.amount, 0);
@@ -52,7 +52,7 @@ const BudgetCategoryList = ({ budget, budgetedCategories, allCategories }) => {
     //     return acc + Math.Max(categoryExpenses, budgetedCategory.budget);
     // }, 0);
 
-    // const notBudgetedTransaction = budget.transactions
+    // const notBudgetedTransaction = transactions
     //     .filter(transaction => {
     //         return !budgetedCategories.find(budgetedCategory => budgetedCategory.id === transaction.categoryId)
     //     });
@@ -79,6 +79,7 @@ const BudgetCategoryList = ({ budget, budgetedCategories, allCategories }) => {
 
 export default connect(state => ({
     budget: state.budget.state.budget,
+    transactions: state.budget.state.transactions,
     budgetedCategories: state.budget.state.budgetedCategories,
     allCategories: state.common.allCategories,
 }))(BudgetCategoryList);

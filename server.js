@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const budgetRoutes = require('./routes/budget.routes');
+const transactionsRoutes = require('./routes/transactions.routes');
 
 const path = require('path');
 
@@ -31,6 +32,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '/client/build/')));
 
 app.use('/api', budgetRoutes);
+app.use('/api', transactionsRoutes);
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '/client/build/index.html'));

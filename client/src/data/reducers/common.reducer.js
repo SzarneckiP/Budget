@@ -29,8 +29,8 @@ const common = (state = initialState, action) => {
 
             return {
                 ...state,
-                allCategories: action.payload,
                 loadingState: newLoadingState,
+                allCategories: action.payload,
             }
 
         case ALL_CATEGORIES_GET_FAILURE:
@@ -38,8 +38,8 @@ const common = (state = initialState, action) => {
 
             return {
                 ...state,
-                allCategories: [],
                 loadingState: newLoadingState,
+                allCategories: [],
             }
 
         default:

@@ -100,7 +100,7 @@
     "budgets": [
         {
             "id": "1",
-            "name": "August",
+            "name": "December",
             "totalAmount": 2700
         }
     ],
@@ -110,7 +110,7 @@
             "description": "Internet provider",
             "amount": 120.47,
             "categoryId": "1",
-            "date": "2021-12-31T00:01:00.768Z",
+            "date": "2021-12-30T00:01:00.768Z",
             "budgetId": "1"
         },
         {
@@ -118,7 +118,7 @@
             "description": "Mobile network provider",
             "amount": 39.99,
             "categoryId": "2",
-            "date": "2021-12-31T00:02:00.768Z",
+            "date": "2021-12-29T00:02:00.768Z",
             "budgetId": "1"
         },
         {
@@ -142,16 +142,24 @@
             "description": "Grocery shopping",
             "amount": 16.53,
             "categoryId": "5",
-            "date": "2021-12-31T00:05:00.768Z",
+            "date": "2021-12-30T00:05:00.768Z",
             "budgetId": "1"
         },
         {
             "description": "Default agile workflow",
             "amount": 123,
-            "categoryId": "2",
+            "categoryId": null,
             "date": "2021-12-31",
-            "budgetId": "0",
+            "budgetId": "1",
             "id": "1xFr3s"
+        },
+        {
+            "id": "6",
+            "description": "Grocery shopping",
+            "amount": 38.37,
+            "categoryId": "5",
+            "date": "2022-01-30T00:05:00.768Z",
+            "budgetId": "1"
         }
     ]
 }
