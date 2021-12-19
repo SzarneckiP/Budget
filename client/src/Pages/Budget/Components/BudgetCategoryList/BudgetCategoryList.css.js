@@ -16,6 +16,10 @@ export const ParentCategory = styled(Category)`
     border-top-right-radius: ${({ theme }) => theme.size.small}px;
     padding-top: 10px;
     padding-bottom: 10px; 
+    border-bottom-left-radius: ${({ theme }) => theme.size.small}px;
+    border-bottom-right-radius: ${({ theme }) => theme.size.small}px;
+    cursor: ${({ onClick }) => onClick ? `pointer` : 'default'};
+    
 `
 export const CategoryItem = styled(Category)`
     background-color: ${({ theme }) => theme.color.gray.light};
@@ -23,6 +27,7 @@ export const CategoryItem = styled(Category)`
     &:last-child {
         border-bottom-left-radius: ${({ theme }) => theme.size.small}px;
         border-bottom-right-radius: ${({ theme }) => theme.size.small}px;
+    }
 `
 
 export const Wrapper = styled.div`

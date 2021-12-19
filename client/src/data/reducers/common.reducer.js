@@ -43,9 +43,7 @@ const common = (state = initialState, action) => {
             }
 
         default:
-            return {
-                state,
-            }
+            return state;
     }
 };
 

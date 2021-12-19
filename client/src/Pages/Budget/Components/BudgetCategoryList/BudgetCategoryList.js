@@ -39,47 +39,47 @@ const BudgetCategoryList = ({ budget, transactions, budgetedCategories, allCateg
         }),
     }));
 
-    // const totalSpent = transactions
-    //     .reduce((acc, transaction) => acc + transaction.amount, 0);
-    // const restToSpend = budget.totalAmount - totalSpent;
+    const totalSpent = transactions
+        .reduce((acc, transaction) => acc + transaction.amount, 0);
+    const restToSpend = budget.totalAmount - totalSpent;
 
-    // const amountTaken = budgetedCategories.reduce((acc, budgetedCategory) => {
-    //     const categoryTransactions = transactions
-    //         .filter(transaction => transaction.categoryId === budgetedCategory.id);
-    //     const categoryExpenses = categoryTransactions
-    //         .reduce((acc, transaction) => acc + transaction.amount, 0);
+    const amountTaken = budgetedCategories.reduce((acc, budgetedCategory) => {
+        const categoryTransactions = transactions
+            .filter(transaction => transaction.categoryId === budgetedCategory.id);
+        const categoryExpenses = categoryTransactions
+            .reduce((acc, transaction) => acc + transaction.amount, 0);
 
-    //     return acc + Math.Max(categoryExpenses, budgetedCategory.budget);
-    // }, 0);
+        return acc + Math.max(categoryExpenses, budgetedCategory.budget)
+    }, 0);
 
-    // const notBudgetedTransaction = transactions
-    //     .filter(transaction => {
-    //         return !budgetedCategories.find(budgetedCategory => budgetedCategory.id === transaction.categoryId)
-    //     });
+    const notBudgetedTransaction = transactions
+        .filter(transaction => {
+            return !budgetedCategories.find(budgetedCategory => budgetedCategory.id === transaction.categoryId)
+        });
 
-    // const notBudgetedExpenses = notBudgetedTransaction
-    //     .reduce((acc, transaction) => acc + transaction.amount, 0);
+    const notBudgetedExpenses = notBudgetedTransaction
+        .reduce((acc, transaction) => acc + transaction.amount, 0);
 
-    // const availableForRestCategories = budget.totalAmount - amountTaken - notBudgetedExpenses;
+    const availableForRestCategories = budget.totalAmount - amountTaken - notBudgetedExpenses;
 
     return (
         <div>
-            {/* <ParentCategory
+            <ParentCategory
                 name={budget.name}
                 amount={restToSpend}
-            /> */}
+            />
             <ToggleableList items={listItems} />
-            {/* <ParentCategory
+            <ParentCategory
                 name={t('Other Categories')}
                 amount={availableForRestCategories}
-            /> */}
+            />
         </div>
     )
 }
 
 export default connect(state => ({
-    budget: state.budget.state.budget,
-    transactions: state.budget.state.transactions,
-    budgetedCategories: state.budget.state.budgetedCategories,
+    budget: state.budget.budget,
+    transactions: state.budget.budget.transactions,
+    budgetedCategories: state.budget.budgetedCategories,
     allCategories: state.common.allCategories,
 }))(BudgetCategoryList);

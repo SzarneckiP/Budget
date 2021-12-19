@@ -35,6 +35,6 @@ const BudgetTransactionList = ({ transactions, allCategories }) => {
 }
 
 export default connect(state => ({
-    transactions: state.budget.state.transactions,
+    transactions: state.budget.budget.transactions,
     allCategories: state.common.allCategories,
 }))(BudgetTransactionList);
