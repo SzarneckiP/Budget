@@ -5,18 +5,30 @@ import { formatCurrency, formatDate } from 'utils';
 
 import { List, ListItem } from './BudgetTransactionList.css';
 
-const BudgetTransactionList = ({ transactions, allCategories }) => {
+const BudgetTransactionList = ({ transactions, allCategories, selectedParentCategoryId }) => {
+
+    const filteredTransactionsBySelectedParentCategories = transactions
+        .filter(transaction => {
+            try {
+                const category = allCategories
+                    .find(category => category.id === transaction.categoryId);
+                const parentCategoryName = category.parentCategory.name;
+                return parentCategoryName === selectedParentCategoryId;
+            } catch (error) {
+                return false;
+            }
+        })
 
     const groupedTransactions = groupBy(
-        transactions,
-        transaction => new Date(transaction.date).getUTCFullYear(new Date(transaction.date).getUTCDate())
+        filteredTransactionsBySelectedParentCategories,
+        transaction => new Date(transaction.date).getUTCDate()
     )
 
     return (
         <List>
             {Object.entries(groupedTransactions).map(([key, transactions]) => (
 
-                <li key={transactions.toString()}>
+                <li key={key}>
                     <ul>
                         {transactions.map(transaction => (
                             <ListItem key={transaction.id}>
@@ -37,4 +49,5 @@ const BudgetTransactionList = ({ transactions, allCategories }) => {
 export default connect(state => ({
     transactions: state.budget.budget.transactions,
     allCategories: state.common.allCategories,
+    selectedParentCategoryId: state.budget.selectedParentCategoryId,
 }))(BudgetTransactionList);

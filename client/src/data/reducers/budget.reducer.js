@@ -11,6 +11,8 @@ import {
     TRANSACTIONS_GET_SUCCESS,
     TRANSACTIONS_GET_FAILURE,
 
+    SET_SELECTED_PARENT_CATEGORY_ID,
+
     LOADING_STATES,
 } from 'data/constants';
 
@@ -20,6 +22,7 @@ const initialState = {
     budget: {},
     transactions: [],
     budgetedCategories: [],
+    selectedParentCategoryId: undefined,
 };
 
 const budget = (state = initialState, action) => {
@@ -109,7 +112,11 @@ const budget = (state = initialState, action) => {
                 budgetedCategories: [],
             }
 
-
+        case SET_SELECTED_PARENT_CATEGORY_ID:
+            return {
+                ...state,
+                selectedParentCategoryId: action.payload,
+            }
 
         default:
             return state;
