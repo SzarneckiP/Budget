@@ -22,7 +22,7 @@ const initialState = {
     budget: {},
     transactions: [],
     budgetedCategories: [],
-    selectedParentCategoryId: undefined,
+    selectedParentCategory: undefined,
 };
 
 const budget = (state = initialState, action) => {
@@ -111,11 +111,12 @@ const budget = (state = initialState, action) => {
                 loadingState: newLoadingState,
                 budgetedCategories: [],
             }
+        //SET_SELECTED_PARENT_CATEGORY
 
         case SET_SELECTED_PARENT_CATEGORY_ID:
             return {
                 ...state,
-                selectedParentCategoryId: action.payload,
+                selectedParentCategory: action.payload,
             }
 
         default:

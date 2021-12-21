@@ -17,7 +17,7 @@ export const Image = styled.div`
 `;
 
 export const Description = styled.div`
-    font-family: 'Times New Roman', serif;
+    font-family: 'Readex Pro', sans-serif;
     display: flex;
     justify-content: start;
     flex-direction: column;
@@ -45,6 +45,7 @@ export const Button = styled.button`
     font-weight:  ${({ theme }) => theme.size.high}px;
     &:hover{
         background-color: rgb(219, 112, 147, 1);
+        box-shadow: 0 0 20px ${({ theme }) => theme.color.pink.normal};
     }
 `;
 

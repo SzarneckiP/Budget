@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useEffect } from 'react';
 
 const Item = ({ item, onClickHandler, isActive }) => (
     <div>
@@ -8,9 +8,15 @@ const Item = ({ item, onClickHandler, isActive }) => (
 )
 
 
-const ToggleableList = ({ items }) => {
+const ToggleableList = ({ items, clickRef }) => {
 
     const [selectedItem, setSelectedItem] = useState();
+
+    useEffect(() => { //ustawiamy useEffect aby nie nadpisywać referencji przez setSelectedItem
+        clickRef.current = setSelectedItem;
+    }, [clickRef, setSelectedItem]);
+
+
 
     return (
         <Fragment>

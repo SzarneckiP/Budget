@@ -1,28 +1,43 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { connect } from 'react-redux';
 import { groupBy } from 'lodash';
 import { formatCurrency, formatDate } from 'utils';
 
 import { List, ListItem } from './BudgetTransactionList.css';
+import { selectParentCategory } from 'data/actions/budget.actions';
 
-const BudgetTransactionList = ({ transactions, allCategories, selectedParentCategoryId }) => {
+const BudgetTransactionList = ({ transactions, allCategories, budgetedCategories, selectedParentCategoryId }) => {
 
-    const filteredTransactionsBySelectedParentCategories = transactions
-        .filter(transaction => {
-            try {
-                const category = allCategories
-                    .find(category => category.id === transaction.categoryId);
-                const parentCategoryName = category.parentCategory.name;
-                return parentCategoryName === selectedParentCategoryId;
-            } catch (error) {
-                return false;
-            }
-        })
+    const filteredTransactionsBySelectedParentCategory = useMemo(() => {
+        if (typeof selectedParentCategoryId === 'undefined') {
+            return transactions;
+        };
 
-    const groupedTransactions = groupBy(
-        filteredTransactionsBySelectedParentCategories,
+        if (selectedParentCategoryId === null) {
+            return transactions.filter(transaction => {
+                const hasBudgetCategory = budgetedCategories
+                    .some(budgetedCategory => budgetedCategory.categoryId === transaction.categoryId);
+                return !hasBudgetCategory;
+            });
+        };
+
+        return transactions
+            .filter(transaction => {
+                try {
+                    const category = allCategories
+                        .find(category => category.id === transaction.categoryId);
+                    const parentCategoryName = category.parentCategory.name;
+                    return parentCategoryName === selectedParentCategoryId;
+                } catch (error) {
+                    return false;
+                }
+            });
+    }, [allCategories, budgetedCategories, selectedParentCategoryId, transactions]);
+
+    const groupedTransactions = useMemo(() => groupBy(
+        filteredTransactionsBySelectedParentCategory,
         transaction => new Date(transaction.date).getUTCDate()
-    )
+    ), [filteredTransactionsBySelectedParentCategory]);
 
     return (
         <List>
@@ -48,6 +63,7 @@ const BudgetTransactionList = ({ transactions, allCategories, selectedParentCate
 
 export default connect(state => ({
     transactions: state.budget.budget.transactions,
+    budgetedCategories: state.budget.budgetedCategories,
     allCategories: state.common.allCategories,
-    selectedParentCategoryId: state.budget.selectedParentCategoryId,
+    selectedParentCategoryId: state.budget.selectedParentCategory,
 }))(BudgetTransactionList);
