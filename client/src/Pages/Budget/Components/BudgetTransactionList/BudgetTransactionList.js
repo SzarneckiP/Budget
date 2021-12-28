@@ -4,7 +4,7 @@ import { groupBy } from 'lodash';
 import { formatCurrency, formatDate } from 'utils';
 
 import { List, ListItem } from './BudgetTransactionList.css';
-import { selectParentCategory } from 'data/actions/budget.actions';
+
 
 const BudgetTransactionList = ({ transactions, allCategories, budgetedCategories, selectedParentCategoryId }) => {
 

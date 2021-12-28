@@ -1,5 +1,6 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { Switch, Route } from 'react-router-dom';
 
 import { fetchBudget, fetchBudgetedCategories } from 'data/actions/budget.actions';
 import { fetchAllCategories } from 'data/actions/common.actions';
@@ -8,7 +9,7 @@ import { Grid } from './Budget.css';
 
 import BudgetCategoryList from 'Pages/Budget/Components/BudgetCategoryList';
 import BudgetTransactionList from 'Pages/Budget/Components/BudgetTransactionList/BudgetTransactionList';
-import { LoadingIndicator } from 'components';
+import { LoadingIndicator, Modal, Button } from 'components';
 
 const Budget = ({
     budgetState, commonState,
@@ -28,14 +29,27 @@ const Budget = ({
     );
 
     return (
-        <Grid>
-            <section>
-                {isLoaded ? <BudgetCategoryList /> : <LoadingIndicator />}
-            </section>
-            <section>
-                {isLoaded ? <BudgetTransactionList /> : <LoadingIndicator />}
-            </section>
-        </Grid>
+        <Fragment>
+            <Grid>
+                <section>
+                    {isLoaded ? <BudgetCategoryList /> : <LoadingIndicator />}
+                </section>
+                <section>
+                    {isLoaded ?
+                        <Fragment>
+                            <Button to='/budget/transactions/new'>Add new transaction</Button>
+                            <BudgetTransactionList />
+                        </Fragment>
+
+                        : <LoadingIndicator />}
+                </section>
+            </Grid>
+            <Switch>
+                <Route path='/budget/transactions/new'>
+                    <Modal>Modal Content</Modal>
+                </Route>
+            </Switch>
+        </Fragment>
     )
 }
 
