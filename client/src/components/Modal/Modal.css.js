@@ -17,8 +17,8 @@ export const Content = styled.div`
     background: #fff;
     position: absolute;
     margin: auto;
-    width: 300px;
-    height: 300px;
+    width: 500px;
+    height: 400px;
     box-shadow: ${({ theme }) => `0 5px 10px 2px ${theme.color.gray.dark}`};
     padding: ${({ theme }) => theme.size.normal}px;
     text-align: center;

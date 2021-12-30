@@ -9,9 +9,11 @@ import { Grid } from './Budget.css';
 
 import BudgetCategoryList from 'Pages/Budget/Components/BudgetCategoryList';
 import BudgetTransactionList from 'Pages/Budget/Components/BudgetTransactionList/BudgetTransactionList';
+import AddTransactionForm from 'Pages/Budget/Components/AddTransactionForm/AddTransactionForm';
 import { LoadingIndicator, Modal, Button } from 'components';
 
 const Budget = ({
+    allCategories,
     budgetState, commonState,
     fetchBudget, fetchBudgetedCategories, fetchAllCategories
 }) => {
@@ -27,6 +29,10 @@ const Budget = ({
             && (!!budgetState && Object.keys(budgetState).length === 0),
         [commonState, budgetState]
     );
+
+    const handleSubmitAddTransaction = (values) => {
+        console.log({ values })
+    }
 
     return (
         <Fragment>
@@ -46,7 +52,13 @@ const Budget = ({
             </Grid>
             <Switch>
                 <Route path='/budget/transactions/new'>
-                    <Modal>Modal Content</Modal>
+                    <Modal>
+                        <AddTransactionForm
+                            categories={allCategories}
+                            groupCategoriesBy={'parentCategory.name'}
+                            onSubmit={handleSubmitAddTransaction}
+                        />
+                    </Modal>
                 </Route>
             </Switch>
         </Fragment>
@@ -57,6 +69,7 @@ export default connect(state => {
     return {
         budgetState: state.budget.loadingState,
         commonState: state.common.loadingState,
+        allCategories: state.common.allCategories,
     }
 }, {
     fetchBudget,
