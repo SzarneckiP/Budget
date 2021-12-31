@@ -7,9 +7,9 @@ import {
     BUDGETED_CATEGORIES_GET_SUCCESS,
     BUDGETED_CATEGORIES_GET_FAILURE,
 
-    TRANSACTIONS_GET_REQUEST,
-    TRANSACTIONS_GET_SUCCESS,
-    TRANSACTIONS_GET_FAILURE,
+    BUDGET_TRANSACTION_ADD_REQUEST,
+    BUDGET_TRANSACTION_ADD_SUCCESS,
+    BUDGET_TRANSACTION_ADD_FAILURE,
 
     SET_SELECTED_PARENT_CATEGORY_ID,
 
@@ -57,33 +57,6 @@ const budget = (state = initialState, action) => {
                 budget: {},
             }
 
-        case TRANSACTIONS_GET_REQUEST:
-            return {
-                ...state,
-                loadingState: {
-                    ...state.loadingState,
-                    [action.type]: LOADING_STATES.LOADING,
-                }
-            }
-
-        case TRANSACTIONS_GET_SUCCESS:
-            delete newLoadingState.TRANSACTIONS_GET_REQUEST;
-
-            return {
-                ...state,
-                loadingState: newLoadingState,
-                transactions: action.payload,
-            }
-
-        case TRANSACTIONS_GET_FAILURE:
-            delete newLoadingState.TRANSACTIONS_GET_REQUEST;
-
-            return {
-                ...state,
-                loadingState: newLoadingState,
-                transactions: [],
-            }
-
         //BUDGETED_CATEGORIES
         case BUDGETED_CATEGORIES_GET_REQUEST:
             return {
@@ -111,6 +84,43 @@ const budget = (state = initialState, action) => {
                 loadingState: newLoadingState,
                 budgetedCategories: [],
             }
+        //BUDGET_ADD_TRANSACTION
+        case BUDGET_TRANSACTION_ADD_REQUEST:
+            return {
+                ...state,
+                loadingState: {
+                    ...state.loadingState,
+                    [action.type]: LOADING_STATES.LOADING,
+                }
+            }
+
+        case BUDGET_TRANSACTION_ADD_SUCCESS:
+            delete newLoadingState.BUDGET_TRANSACTION_ADD_REQUEST;
+
+            return {
+                ...state,
+                loadingState: newLoadingState,
+                budget: {
+                    ...state.budget,
+                    transactions: [
+                        action.payload,
+                        ...state.budget.transactions,
+                    ],
+                },
+            }
+
+        case BUDGET_TRANSACTION_ADD_FAILURE:
+            delete newLoadingState.BUDGET_TRANSACTION_ADD_REQUEST;
+
+            return {
+                ...state,
+                loadingState: newLoadingState,
+                budget: {
+                    ...state.budget,
+                },
+            }
+
+
         //SET_SELECTED_PARENT_CATEGORY
 
         case SET_SELECTED_PARENT_CATEGORY_ID:

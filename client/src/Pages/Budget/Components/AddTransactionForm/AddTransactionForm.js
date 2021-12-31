@@ -48,7 +48,7 @@ const AddTransactionForm = ({ onSubmit = noop /*noop is the same as => onSubmit 
                                 </div>
                             )}
                         </Field>
-                        <Field name="category" validate={required}>
+                        <Field name="categoryId" validate={required}>
                             {({ input, meta }) => (
                                 <div>
                                     <label>Category</label>
@@ -81,7 +81,6 @@ const AddTransactionForm = ({ onSubmit = noop /*noop is the same as => onSubmit 
                                 Reset
                             </button>
                         </div>
-                        <pre>{JSON.stringify(values, 0, 2)}</pre>
                     </form>
                 )}
             />

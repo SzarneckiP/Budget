@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 
-import { fetchBudget, fetchBudgetedCategories } from 'data/actions/budget.actions';
+import { fetchBudget, fetchBudgetedCategories, addTransaction } from 'data/actions/budget.actions';
 import { fetchAllCategories } from 'data/actions/common.actions';
 
 import { Grid } from './Budget.css';
@@ -14,8 +14,8 @@ import { LoadingIndicator, Modal, Button } from 'components';
 
 const Budget = ({
     allCategories,
-    budgetState, commonState,
-    fetchBudget, fetchBudgetedCategories, fetchAllCategories
+    budgetState, commonState, budget,
+    fetchBudget, fetchBudgetedCategories, fetchAllCategories, addTransaction
 }) => {
 
     useEffect(() => {
@@ -31,8 +31,11 @@ const Budget = ({
     );
 
     const handleSubmitAddTransaction = (values) => {
-        console.log({ values })
-    }
+        addTransaction({
+            budgetId: budget.id,
+            data: values,
+        })
+    };
 
     return (
         <Fragment>
@@ -67,6 +70,7 @@ const Budget = ({
 
 export default connect(state => {
     return {
+        budget: state.budget.budget,
         budgetState: state.budget.loadingState,
         commonState: state.common.loadingState,
         allCategories: state.common.allCategories,
@@ -75,4 +79,5 @@ export default connect(state => {
     fetchBudget,
     fetchBudgetedCategories,
     fetchAllCategories,
+    addTransaction,
 })(Budget);
