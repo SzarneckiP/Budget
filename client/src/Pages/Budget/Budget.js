@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, useHistory } from 'react-router-dom';
 
 import { fetchBudget, fetchBudgetedCategories, addTransaction } from 'data/actions/budget.actions';
 import { fetchAllCategories } from 'data/actions/common.actions';
@@ -17,7 +17,7 @@ const Budget = ({
     budgetState, commonState, budget,
     fetchBudget, fetchBudgetedCategories, fetchAllCategories, addTransaction
 }) => {
-
+    const history = useHistory();
     useEffect(() => {
         fetchBudget(1);
         fetchBudgetedCategories(1);
@@ -34,7 +34,7 @@ const Budget = ({
         addTransaction({
             budgetId: budget.id,
             data: values,
-        })
+        }).then(() => history.goBack());
     };
 
     return (

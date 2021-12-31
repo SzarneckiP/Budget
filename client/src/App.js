@@ -7,12 +7,16 @@ import { Home, Budget } from 'Pages';
 import { ThemeProvider } from 'styled-components';
 import { theme } from 'utils/theme';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from 'react-router-dom';
+
+toast.configure();
 
 function App() {
 

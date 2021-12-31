@@ -176,6 +176,14 @@
       "date": "2021-12-30",
       "budgetId": "1",
       "id": "MV9bhV4"
+    },
+    {
+      "description": "New Transaction #Test close Modal",
+      "amount": 1,
+      "categoryId": "3",
+      "date": "2021-12-31",
+      "budgetId": "1",
+      "id": "e0N8C_l"
     }
   ]
 }
