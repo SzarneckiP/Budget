@@ -6,7 +6,7 @@ cursor: inherit;
 border: none;
 background-color: transparent;
 cursor: ${props => props.to || props.onClick || props.type === 'submit' ? 'pointer' : 'default'};
-
+font-family: 'Readex Pro', sans-serif;
 &:hover {
     opacity: .8;
 }
@@ -21,7 +21,7 @@ text-decoration: underline;
 export const RegularButton = styled(RootButton)`
 background: ${({ theme: { color }, primary }) => primary ? color.pink.normal : color.gray.light};
 margin: ${({ theme }) => `${theme.spacing.xs / 2}px`};
-padding: ${({ theme }) => `${theme.spacing.xs / 2}px`};
+padding: ${({ theme }) => `${theme.spacing.xs}px`};
 border: ${({ theme }) => ` 2px solid ${theme.color.pink.normal}`};
-border-radius: 3px;
+border-radius: 7px;
 `;

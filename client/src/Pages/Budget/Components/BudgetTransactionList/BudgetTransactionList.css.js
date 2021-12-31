@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
 export const List = styled.ul`
+margin-top: ${({ theme }) => theme.spacing.xs * 1.4}px;
     > li + li {
-        margin-top: ${({ theme }) => theme.spacing.xs}px;
+        
+        border-top: 3px solid ${({ theme }) => theme.color.pink.normal};
     }
 
     li {
@@ -11,7 +13,7 @@ export const List = styled.ul`
 `
 
 export const ListItem = styled.li`
-    border: 1px solid ${({ theme }) => theme.color.gray.dark};
+    border-bottom: 1px solid ${({ theme }) => theme.color.gray.dark};
     padding: ${({ theme }) => theme.spacing.xs}px;
     display: flex;
     justify-content: space-between;
@@ -23,9 +25,9 @@ export const ListItem = styled.li`
         flex: 2;
     }
     > *:nth-child(3) {
-        flex: 3;
+        flex: 2;
     }
     > *:nth-child(4) {
-        flex: 1;
+        flex: 2;
     }
 `

@@ -5,7 +5,7 @@ import { Switch, Route, useHistory } from 'react-router-dom';
 import { fetchBudget, fetchBudgetedCategories, addTransaction } from 'data/actions/budget.actions';
 import { fetchAllCategories } from 'data/actions/common.actions';
 
-import { Grid } from './Budget.css';
+import { Grid, Section } from './Budget.css';
 
 import BudgetCategoryList from 'Pages/Budget/Components/BudgetCategoryList';
 import BudgetTransactionList from 'Pages/Budget/Components/BudgetTransactionList/BudgetTransactionList';
@@ -40,18 +40,19 @@ const Budget = ({
     return (
         <Fragment>
             <Grid>
-                <section>
-                    {isLoaded ? <BudgetCategoryList /> : <LoadingIndicator />}
-                </section>
-                <section>
+                <Section>
+                    {isLoaded ?
+                        <BudgetCategoryList />
+                        : <LoadingIndicator />}
+                </Section>
+                <Section>
                     {isLoaded ?
                         <Fragment>
                             <Button to='/budget/transactions/new'>Add new transaction</Button>
                             <BudgetTransactionList />
                         </Fragment>
-
                         : <LoadingIndicator />}
-                </section>
+                </Section>
             </Grid>
             <Switch>
                 <Route path='/budget/transactions/new'>

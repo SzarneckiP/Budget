@@ -29,5 +29,5 @@ export const theme = {
         normal: '20',
         medium: '50',
         high: '90'
-    }
+    },
 }
