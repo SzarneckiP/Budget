@@ -1,19 +1,19 @@
-import React, { Fragment } from 'react';
+import React, { } from 'react';
 import { connect } from 'react-redux';
 import { Switch, Route, useHistory } from 'react-router-dom';
 
 import { addTransaction } from 'data/actions/budget.actions';
 
-import { Grid, Section } from './Budget.css';
+import { Grid, Section, Fragment } from './Budget.css';
 
 import BudgetCategoryList from 'Pages/Budget/Components/BudgetCategoryList';
 import BudgetTransactionList from 'Pages/Budget/Components/BudgetTransactionList/BudgetTransactionList';
 import AddTransactionForm from 'Pages/Budget/Components/AddTransactionForm/AddTransactionForm';
-import { Modal, Button, LoadingIndicator } from 'components';
+import { Modal, Button, SuspenseErrorBoundary } from 'components';
 
 const Budget = ({
     allCategories,
-    budgetState, commonState, budget,
+    budget,
     addTransaction
 }) => {
     const history = useHistory();
@@ -27,17 +27,17 @@ const Budget = ({
 
     return (
         <Fragment>
+            <Button to='/budget/transactions/new'>Add new transaction</Button>
             <Grid>
                 <Section>
-                    <React.Suspense fallback={<LoadingIndicator />}>
+                    <SuspenseErrorBoundary>
                         <BudgetCategoryList />
-                    </React.Suspense>
+                    </SuspenseErrorBoundary>
                 </Section>
                 <Section>
-                    <Button to='/budget/transactions/new'>Add new transaction</Button>
-                    <React.Suspense fallback={<LoadingIndicator />}>
+                    <SuspenseErrorBoundary>
                         <BudgetTransactionList />
-                    </React.Suspense>
+                    </SuspenseErrorBoundary>
                 </Section>
             </Grid>
             <Switch>
