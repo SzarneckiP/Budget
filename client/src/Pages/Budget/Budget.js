@@ -1,34 +1,22 @@
-import React, { useEffect, useMemo, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Switch, Route, useHistory } from 'react-router-dom';
 
-import { fetchBudget, fetchBudgetedCategories, addTransaction } from 'data/actions/budget.actions';
-import { fetchAllCategories } from 'data/actions/common.actions';
+import { addTransaction } from 'data/actions/budget.actions';
 
 import { Grid, Section } from './Budget.css';
 
 import BudgetCategoryList from 'Pages/Budget/Components/BudgetCategoryList';
 import BudgetTransactionList from 'Pages/Budget/Components/BudgetTransactionList/BudgetTransactionList';
 import AddTransactionForm from 'Pages/Budget/Components/AddTransactionForm/AddTransactionForm';
-import { LoadingIndicator, Modal, Button } from 'components';
+import { Modal, Button, LoadingIndicator } from 'components';
 
 const Budget = ({
     allCategories,
     budgetState, commonState, budget,
-    fetchBudget, fetchBudgetedCategories, fetchAllCategories, addTransaction
+    addTransaction
 }) => {
     const history = useHistory();
-    useEffect(() => {
-        fetchBudget(1);
-        fetchBudgetedCategories(1);
-        fetchAllCategories();
-    }, [fetchBudget, fetchBudgetedCategories, fetchAllCategories]);
-
-    const isLoaded = useMemo( //useMemo nie wykonuje ponownego uruchomienia  jeśli komponent sie przerenderuje
-        () => (!!commonState && Object.keys(commonState).length === 0)
-            && (!!budgetState && Object.keys(budgetState).length === 0),
-        [commonState, budgetState]
-    );
 
     const handleSubmitAddTransaction = (values) => {
         addTransaction({
@@ -41,17 +29,15 @@ const Budget = ({
         <Fragment>
             <Grid>
                 <Section>
-                    {isLoaded ?
+                    <React.Suspense fallback={<LoadingIndicator />}>
                         <BudgetCategoryList />
-                        : <LoadingIndicator />}
+                    </React.Suspense>
                 </Section>
                 <Section>
-                    {isLoaded ?
-                        <Fragment>
-                            <Button to='/budget/transactions/new'>Add new transaction</Button>
-                            <BudgetTransactionList />
-                        </Fragment>
-                        : <LoadingIndicator />}
+                    <Button to='/budget/transactions/new'>Add new transaction</Button>
+                    <React.Suspense fallback={<LoadingIndicator />}>
+                        <BudgetTransactionList />
+                    </React.Suspense>
                 </Section>
             </Grid>
             <Switch>
@@ -77,8 +63,5 @@ export default connect(state => {
         allCategories: state.common.allCategories,
     }
 }, {
-    fetchBudget,
-    fetchBudgetedCategories,
-    fetchAllCategories,
     addTransaction,
 })(Budget);

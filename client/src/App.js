@@ -10,6 +10,8 @@ import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import { QueryClient, QueryClientProvider } from 'react-query';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -47,13 +49,24 @@ function App() {
   );
 }
 
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      suspense: true,
+    },
+  },
+})
+
+
 const RootApp = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <React.Suspense fallback={<LoadingIndicator />}>
-        <App />
-      </React.Suspense>
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient} >
+      <ThemeProvider theme={theme}>
+        <React.Suspense fallback={<LoadingIndicator />}>
+          <App />
+        </React.Suspense>
+      </ThemeProvider>
+    </QueryClientProvider>
   )
 }
 
