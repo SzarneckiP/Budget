@@ -201,6 +201,14 @@
       "date": "2022-01-05",
       "budgetId": "1",
       "id": "fnzW_AG"
+    },
+    {
+      "description": "Test Mutation 2",
+      "amount": 300,
+      "categoryId": "3",
+      "date": "2022-01-05",
+      "budgetId": "1",
+      "id": "VhfDiK_"
     }
   ]
 }
