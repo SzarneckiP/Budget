@@ -1,1 +1,1 @@
-export { default } from './AddTransactionList';
+export { default } from './AddTransactionView';

@@ -4,6 +4,7 @@ import { groupBy, noop } from 'lodash';
 
 import Styles from './AddTransactionForm.css';
 
+
 const required = (value) => (value ? undefined : "This field is Required!");
 
 const AddTransactionForm = ({ onSubmit = noop /*noop is the same as => onSubmit = () => { }*/, categories, groupCategoriesBy }) => {

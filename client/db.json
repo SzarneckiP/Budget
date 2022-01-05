@@ -193,6 +193,14 @@
       "date": "2021-12-31",
       "budgetId": "1",
       "id": "EpNsxzM"
+    },
+    {
+      "description": "Test Mutation",
+      "amount": 300,
+      "categoryId": "3",
+      "date": "2022-01-05",
+      "budgetId": "1",
+      "id": "fnzW_AG"
     }
   ]
 }
