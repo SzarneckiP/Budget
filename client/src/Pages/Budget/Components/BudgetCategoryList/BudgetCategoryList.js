@@ -1,5 +1,4 @@
-import React, { useRef, useMemo, useCallback } from 'react';
-import { connect } from 'react-redux';
+import React, { useRef, useMemo, useCallback, useContext } from 'react';
 import { groupBy } from 'lodash';
 import { useTranslation } from 'react-i18next';
 import { useQuery } from 'react-query';
@@ -8,13 +7,15 @@ import { ToggleableList } from 'components';
 import ParentCategory from './ParentCategory';
 import CategoryItem from './CategoryItem';
 
-import { selectParentCategory } from 'data/actions/budget.actions';
+import BudgetContext from 'data/context/budget.context';
 import API from 'data/fetch';
 
-const BudgetCategoryList = ({ selectParentCategory }) => {
+const BudgetCategoryList = () => {
     const { data: budget } = useQuery(['budget', 1], () => API.budget.fetchBudget(1));
     const { data: allCategories } = useQuery('allCategories', API.common.fetchAllCategories);
     const { data: budgetedCategories } = useQuery(['budgetedCategories', 1], () => API.budget.fetchBudgetedCategories(1));
+
+    const {setSelectedParentCategoryId} = useContext(BudgetContext.store);
 
     const { t } = useTranslation();
 
@@ -25,14 +26,14 @@ const BudgetCategoryList = ({ selectParentCategory }) => {
     ), [budgetedCategories, allCategories]);
 
     const handleClearParenCategorySelect = useCallback(() => {
-        selectParentCategory(/*jeśli wywołanie jest puste domyślnie ustawia sie UNDEFINE*/);
+        setSelectedParentCategoryId(/*jeśli wywołanie jest puste domyślnie ustawia sie UNDEFINE*/);
         handleClickParentCategoryRef.current();
-    }, [selectParentCategory, handleClickParentCategoryRef]);
+    }, [setSelectedParentCategoryId, handleClickParentCategoryRef]);
 
     const handleSelectRestParentCategories = useCallback(() => {
-        selectParentCategory(null);
+        setSelectedParentCategoryId(null);
         handleClickParentCategoryRef.current();
-    }, [selectParentCategory, handleClickParentCategoryRef]);
+    }, [setSelectedParentCategoryId, handleClickParentCategoryRef]);
 
     const listItems = useMemo(() => Object.entries(budgetedCategoriesByParent).map(([parentName, categories]) => ({
         id: parentName,
@@ -41,7 +42,7 @@ const BudgetCategoryList = ({ selectParentCategory }) => {
                 name={parentName}
                 onClick={() => {
                     onClick(parentName);
-                    selectParentCategory(parentName);
+                    setSelectedParentCategoryId(parentName);
                 }}
                 categories={categories}
                 transactions={budget.transactions}
@@ -62,7 +63,7 @@ const BudgetCategoryList = ({ selectParentCategory }) => {
             )
         }),
     })),
-        [budget.transactions, allCategories, selectParentCategory, budgetedCategoriesByParent]);
+        [budget.transactions, allCategories, setSelectedParentCategoryId, budgetedCategoriesByParent]);
 
     const totalSpent = useMemo(() => budget.transactions
         .reduce((acc, transaction) => acc + transaction.amount, 0),
@@ -113,6 +114,4 @@ const BudgetCategoryList = ({ selectParentCategory }) => {
     )
 }
 
-export default connect(null, {
-    selectParentCategory,
-})(BudgetCategoryList);
+export default BudgetCategoryList;

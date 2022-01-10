@@ -1,11 +1,11 @@
 import React, { useState, Fragment, useEffect } from 'react';
 
-const Item = ({ item, onClickHandler, isActive }) => (
+const Item = React.memo(({ item, onClickHandler, isActive }) => (
     <div>
         <item.Trigger onClick={onClickHandler} />
         {isActive && item.children}
     </div>
-)
+));
 
 
 const ToggleableList = ({ items, clickRef }) => {
@@ -32,4 +32,4 @@ const ToggleableList = ({ items, clickRef }) => {
     )
 }
 
-export default ToggleableList;
+export default React.memo(ToggleableList);

@@ -1,38 +1,48 @@
-import React, { } from 'react';
+import React, {useState, useContext} from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import { Grid, Section, Fragment } from './Budget.css';
-
-import BudgetCategoryList from 'Pages/Budget/Components/BudgetCategoryList';
-import BudgetTransactionList from 'Pages/Budget/Components/BudgetTransactionList';
-import AddTransactionView from 'Pages/Budget/Components/AddTransactionForm';
 import { Modal, Button, SuspenseErrorBoundary } from 'components';
+import BudgetContext from 'data/context/budget.context';
+
+const BudgetCategoryList = React.lazy(()=> import('Pages/Budget/Components/BudgetCategoryList'));
+const BudgetTransactionList = React.lazy(()=> import('Pages/Budget/Components/BudgetTransactionList'));
+const AddTransactionView = React.lazy(()=> import('Pages/Budget/Components/AddTransactionForm'));
 
 
 const Budget = () => {
 
+    const [showTransactions, setShowTransactions] = useState();
+
     return (
         <Fragment>
-            <Button to='/budget/transactions/new'>Add new transaction</Button>
-            <Grid>
-                <Section>
-                    <SuspenseErrorBoundary>
-                        <BudgetCategoryList />
-                    </SuspenseErrorBoundary>
-                </Section>
-                <Section>
-                    <SuspenseErrorBoundary>
-                        <BudgetTransactionList />
-                    </SuspenseErrorBoundary>
-                </Section>
-            </Grid>
-            <Switch>
-                <Route path='/budget/transactions/new'>
-                    <Modal>
-                        <AddTransactionView />
-                    </Modal>
-                </Route>
-            </Switch>
+            <BudgetContext.BudgetProvider>
+                <Button to='/budget/transactions/new'>Add new transaction</Button>
+                <Button onClick={()=> setShowTransactions(!showTransactions)}>
+                    {showTransactions ?'Hide Transactions' : 'Show transactions'}
+                </Button>
+                <Grid>
+                    <Section>
+                        <SuspenseErrorBoundary>
+                            <BudgetCategoryList />
+                        </SuspenseErrorBoundary>
+                    </Section>
+                    <Section>
+                        <SuspenseErrorBoundary>
+                            {showTransactions && (
+                                <BudgetTransactionList />
+                            )}
+                        </SuspenseErrorBoundary>
+                    </Section>
+                </Grid>
+                <Switch>
+                    <Route path='/budget/transactions/new'>
+                        <Modal>
+                            <AddTransactionView />
+                        </Modal>
+                    </Route>
+                </Switch>
+            </BudgetContext.BudgetProvider>
         </Fragment>
     )
 }
