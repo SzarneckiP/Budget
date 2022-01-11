@@ -3,7 +3,10 @@ What I done and used in app:
 - Used Hooks,
 - Styled-Components,
 - Translate i18next,
+- React.Lazy,
 - React.Suspense,
+- React.Query,
+- React.Context,
 - Used own middleware - Promise,
 - JSON Server
 
