@@ -7,8 +7,10 @@ What I done and used in app:
 - React.Suspense,
 - React.Query,
 - React.Context,
+- React-toastify,
 - Used own middleware - Promise,
-- JSON Server
+- JSON Server,
+- Formik,
 
 
 # Getting Started with Create React App
