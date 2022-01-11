@@ -6,11 +6,11 @@ What I done and used in app:
 - React.Lazy,
 - React.Suspense,
 - React.Query,
-- React.Context,
+- Context-API,
+- React-Final-Form,
 - React-toastify,
 - Used own middleware - Promise,
 - JSON Server,
-- Formik,
 
 
 # Getting Started with Create React App
