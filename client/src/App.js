@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import GlobalStyles from './index.css';
 
 import { LoadingIndicator, Navigation, Wrapper, Button } from 'components';
-import { Home, Budget } from 'Pages';
+import { Home, Budget, NotFound } from 'Pages';
 
 import { ThemeProvider } from 'styled-components';
 import { theme } from 'utils/theme';
@@ -42,6 +42,7 @@ function App() {
           <Switch>
             <Route exact path='/'><Home /></Route>
             <Route path='/budget'><Budget /></Route>
+            <Route path='*'><NotFound /></Route>
           </Switch>
         </Wrapper>
       </Router>

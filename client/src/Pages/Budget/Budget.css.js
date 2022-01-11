@@ -20,3 +20,16 @@ export const Fragment = styled.div`
     margin-top: 10px;
     text-align: center;
 `;
+
+export const Information = styled.div`
+    font-size: ${({theme}) => theme.size.normal}px;
+    margin: ${({theme}) => theme.spacing.sm}px;
+    color: ${({theme}) => theme.color.pink.normal};
+    line-height: ${({theme}) => theme.size.small * 3}px;
+`;
+
+export const SectionBtn = styled.div`
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: ${({theme}) => theme.spacing.sm * 1.5}px;
+`;

@@ -15,7 +15,11 @@ const BudgetCategoryList = () => {
     const { data: allCategories } = useQuery('allCategories', API.common.fetchAllCategories);
     const { data: budgetedCategories } = useQuery(['budgetedCategories', 1], () => API.budget.fetchBudgetedCategories(1));
 
-    const {setSelectedParentCategoryId} = useContext(BudgetContext.store);
+    const {dispatch} = useContext(BudgetContext.store);
+    const  setSelectedParentCategoryId = useCallback((id) => dispatch({
+        type: 'selectParentCategoryId',
+        payload: id,
+    }), [dispatch]);
 
     const { t } = useTranslation();
 

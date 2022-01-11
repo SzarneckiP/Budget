@@ -13,9 +13,8 @@ const BudgetTransactionList = () => {
     const { data: allCategories } = useQuery('allCategories', API.common.fetchAllCategories);
     const { data: budgetedCategories } = useQuery(['budgetedCategories', 1], () => API.budget.fetchBudgetedCategories(1));
 
-    const { selectedParentCategoryId} = useContext(BudgetContext.store);
-    console.log(selectedParentCategoryId)
-
+    const { selectedParentCategoryId } = useContext(BudgetContext.store);
+   
     const filteredTransactionsBySelectedParentCategory = useMemo(() => {
         if (typeof selectedParentCategoryId === 'undefined') {
             return budget.transactions;

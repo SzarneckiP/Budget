@@ -1,15 +1,28 @@
-import React, { createContext, useState} from 'react';
+import React, { createContext, useReducer} from 'react';
 
 const initialValue = {};
 const store = createContext(initialValue);
 const {Provider} = store;
 
-const BudgetProvider = ({children}) => {
+const reducer = (state, action) => {
+    switch (action.type) {
+        case 'selectParentCategoryId':
+           return {
+               ...state,
+               selectedParentCategoryId: action.payload,
+           }
+           
+        default:
+            return state;
+    }
+}
 
-    const [selectedParentCategoryId ,setSelectedParentCategoryId ] = useState();
+const BudgetProvider = ({ children }) => {
+
+    const [state, dispatch] = useReducer(reducer, initialValue);
 
     return (
-        <Provider value={{selectedParentCategoryId, setSelectedParentCategoryId }}>
+        <Provider value={{ ...state, dispatch }}>
             {children}
         </Provider>
     )
