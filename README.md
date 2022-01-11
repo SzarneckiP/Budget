@@ -6,6 +6,8 @@ What I done and used in app:
 - React.Lazy,
 - React.Suspense,
 - React.Query,
+- React.memo,
+- Portals,
 - Context-API,
 - React-Final-Form,
 - React-toastify,
