@@ -3,9 +3,16 @@ What I done and used in app:
 - Used Hooks,
 - Styled-Components,
 - Translate i18next,
+- React.Lazy,
 - React.Suspense,
+- React.Query,
+- React.memo,
+- Portals,
+- Context-API,
+- React-Final-Form,
+- React-toastify,
 - Used own middleware - Promise,
-- JSON Server
+- JSON Server,
 
 
 # Getting Started with Create React App
