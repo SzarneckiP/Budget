@@ -209,6 +209,14 @@
       "date": "2022-01-05",
       "budgetId": "1",
       "id": "VhfDiK_"
+    },
+    {
+      "description": "asfs",
+      "amount": 3,
+      "categoryId": "3",
+      "date": "2022-01-12",
+      "budgetId": "1",
+      "id": "fnevyJr"
     }
   ]
 }
