@@ -10,7 +10,8 @@ const AddTransactionView = () => {
 
     const { data: budget } = useQuery(['budget', 1], () => API.budget.fetchBudget(1));
     const { data: allCategories } = useQuery('allCategories', API.common.fetchAllCategories);
-    const queryClient = useQueryClient()
+    const queryClient = useQueryClient();
+    const history = useHistory();
 
     const mutation = useMutation(API.budget.addTransaction, {
         onSuccess: () => {
@@ -21,8 +22,6 @@ const AddTransactionView = () => {
             });
         }
     });
-
-    const history = useHistory();
 
     const handleSubmitAddTransaction = (values) => {
         mutation.mutate({

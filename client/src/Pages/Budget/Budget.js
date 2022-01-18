@@ -35,9 +35,9 @@ const Budget = () => {
                         <SuspenseErrorBoundary>
                             {showTransactions 
                                 ? <BudgetTransactionList />
-                                : <NotFound 
-                                    children = {<Information>It was a joke! :) <br /> Click "Show Transactions" and you will see details!</Information>}
-                                />
+                                : <NotFound>
+                                    <Information>It was a joke! :) <br /> Click "Show Transactions" and you will see details!</Information>
+                                </NotFound>
                             }
                         </SuspenseErrorBoundary>
                     </Section>

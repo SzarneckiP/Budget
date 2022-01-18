@@ -1,16 +1,14 @@
 import React, { Fragment } from 'react';
-import { DescriptionNF, Wrapper, Description404} from './NotFound.css';
+import { Description, Wrapper, Description404} from './NotFound.css';
 
 const notFound = ({ children }) => {
     return (
         <Fragment>
             <Wrapper >
-                <Description404>
-                    404
-                </Description404>
-                <DescriptionNF>
-                    Not Found
-                </DescriptionNF>
+                <Description>
+                    <h1>404</h1>
+                    <h2>Not Found</h2>
+                </Description>
                 {children}
             </Wrapper>
         </Fragment>

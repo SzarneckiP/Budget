@@ -42,7 +42,11 @@ function App() {
           <Switch>
             <Route exact path='/'><Home /></Route>
             <Route path='/budget'><Budget /></Route>
-            <Route path='*'><NotFound /></Route>
+            <Route path='*'>
+              <NotFound>
+                <Button to='/'>Back to Home Page</Button>
+              </NotFound>
+            </Route>
           </Switch>
         </Wrapper>
       </Router>

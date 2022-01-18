@@ -35,7 +35,7 @@ const AddTransactionForm = ({ onSubmit = noop /*noop is the same as => onSubmit 
                             {({ input, meta }) => (
                                 <div>
                                     <label>Description</label>
-                                    <input {...input} type="text" placeholder="Description" />
+                                    <input {...input} type="text" placeholder="Description"  />
                                     {meta.error && meta.touched && <span>{meta.error}</span>}
                                 </div>
                             )}
